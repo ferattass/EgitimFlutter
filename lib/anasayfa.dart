@@ -52,10 +52,10 @@ class _AnasayfaState extends State<Anasayfa> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Chip(icerik: d!.peynirYazi),
-                Chip(icerik: d!.sucukYazi),
-                Chip(icerik: d!.zeytinYazi),
-                Chip(icerik: d!.biberYazi)
+                Chip(icerik: d.peynirYazi),
+                Chip(icerik: d.sucukYazi),
+                Chip(icerik: d.zeytinYazi),
+                Chip(icerik: d.biberYazi)
               ],
             ),
           ),
@@ -64,7 +64,7 @@ class _AnasayfaState extends State<Anasayfa> {
             child: Column(
               children: [
                 Text(
-                  d!.teslimatSure,
+                  d.teslimatSure,
                   style: TextStyle(
                       fontSize: 22,
                       color: yaziRenk2,
@@ -73,7 +73,7 @@ class _AnasayfaState extends State<Anasayfa> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    d!.teslimatBaslik,
+                    d.teslimatBaslik,
                     style: TextStyle(
                         fontSize: 22,
                         color: anaRenk,
@@ -81,7 +81,7 @@ class _AnasayfaState extends State<Anasayfa> {
                   ),
                 ),
                 Text(
-                  d!.pizzaAciklama,
+                  d.pizzaAciklama,
                   style: TextStyle(
                     fontSize: 22,
                     color: yaziRenk2,
@@ -97,7 +97,7 @@ class _AnasayfaState extends State<Anasayfa> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  d!.fiyat,
+                  d.fiyat,
                   style: TextStyle(
                       fontSize: 35,
                       color: anaRenk,
@@ -114,7 +114,7 @@ class _AnasayfaState extends State<Anasayfa> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(5)))),
                     child: Text(
-                      d!.buttonYazi,
+                      d.buttonYazi,
                       style: TextStyle(color: yaziRenk1, fontSize: 18),
                     ),
                   ),
