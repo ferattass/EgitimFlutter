@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:egitim/renkler.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Anasayfa extends StatefulWidget {
   const Anasayfa({super.key});
@@ -11,14 +12,23 @@ class Anasayfa extends StatefulWidget {
 class _AnasayfaState extends State<Anasayfa> {
   @override
   Widget build(BuildContext context) {
+    var ekranBilgisi = MediaQuery.of(context);
+    final double ekranGenisligi = ekranBilgisi.size.width;
+    final double ekranYuksekligi = ekranBilgisi.size.height;
+    print("Ekran Yüksekligi : $ekranYuksekligi ");
+    print("Ekran Genisligi : $ekranGenisligi ");
+
+    var d = AppLocalizations.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'QrFooder',
           style: TextStyle(
-              color: yaziRenk1,
-              fontFamily: "LogoFont",
-              fontSize: 25), //Const olunca sabit oluyo dikkat
+            color: yaziRenk1,
+            fontFamily: "LogoFont",
+            fontSize: ekranGenisligi / 15,
+          ), //Const olunca sabit oluyo dikkat
         ),
         backgroundColor: anaRenk,
         centerTitle: true,
@@ -26,9 +36,9 @@ class _AnasayfaState extends State<Anasayfa> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 16),
+            padding: EdgeInsets.only(top: ekranYuksekligi / 50),
             child: Text(
-              "Pizza",
+              d!.pizzaBaslik,
               style: TextStyle(
                   fontSize: 35, color: anaRenk, fontWeight: FontWeight.bold),
             ),
@@ -42,38 +52,10 @@ class _AnasayfaState extends State<Anasayfa> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(backgroundColor: anaRenk),
-                  child: Text(
-                    "Cheese",
-                    style: TextStyle(color: yaziRenk1),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(backgroundColor: anaRenk),
-                  child: Text(
-                    "Sausage",
-                    style: TextStyle(color: yaziRenk1),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(backgroundColor: anaRenk),
-                  child: Text(
-                    "Olive",
-                    style: TextStyle(color: yaziRenk1),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(backgroundColor: anaRenk),
-                  child: Text(
-                    "Pepper",
-                    style: TextStyle(color: yaziRenk1),
-                  ),
-                ),
+                Chip(icerik: d!.peynirYazi),
+                Chip(icerik: d!.sucukYazi),
+                Chip(icerik: d!.zeytinYazi),
+                Chip(icerik: d!.biberYazi)
               ],
             ),
           ),
@@ -82,7 +64,7 @@ class _AnasayfaState extends State<Anasayfa> {
             child: Column(
               children: [
                 Text(
-                  "20 min",
+                  d!.teslimatSure,
                   style: TextStyle(
                       fontSize: 22,
                       color: yaziRenk2,
@@ -91,7 +73,7 @@ class _AnasayfaState extends State<Anasayfa> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    "Delivery",
+                    d!.teslimatBaslik,
                     style: TextStyle(
                         fontSize: 22,
                         color: anaRenk,
@@ -99,7 +81,7 @@ class _AnasayfaState extends State<Anasayfa> {
                   ),
                 ),
                 Text(
-                  "Meat lover, get ready to meet your pizza!",
+                  d!.pizzaAciklama,
                   style: TextStyle(
                     fontSize: 22,
                     color: yaziRenk2,
@@ -115,14 +97,14 @@ class _AnasayfaState extends State<Anasayfa> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  "\$7.99",
+                  d!.fiyat,
                   style: TextStyle(
                       fontSize: 35,
                       color: anaRenk,
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
-                  width: 200,
+                  width: ekranGenisligi / 2,
                   height: 50,
                   child: TextButton(
                     onPressed: () {},
@@ -132,7 +114,7 @@ class _AnasayfaState extends State<Anasayfa> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(5)))),
                     child: Text(
-                      "Add To Card!",
+                      d!.buttonYazi,
                       style: TextStyle(color: yaziRenk1, fontSize: 18),
                     ),
                   ),
@@ -143,5 +125,22 @@ class _AnasayfaState extends State<Anasayfa> {
         ],
       ),
     );
+  }
+}
+
+class Chip extends StatelessWidget {
+  String icerik;
+  Chip({required this.icerik});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      style: TextButton.styleFrom(backgroundColor: anaRenk),
+      child: Text(
+        icerik,
+        style: TextStyle(color: yaziRenk1),
+      ),
+    ); //
   }
 }
