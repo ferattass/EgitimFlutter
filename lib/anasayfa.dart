@@ -125,7 +125,7 @@ class _AnasayfaState extends State<Anasayfa> {
         ],
       ),
     );
-  }
+  } 
 }
 
 class Chip extends StatelessWidget {
